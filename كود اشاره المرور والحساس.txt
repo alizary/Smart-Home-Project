@@ -1,0 +1,94 @@
+int r=2;
+int y=3;
+int g=4;
+
+int tring=5;
+int eco=6;
+int t=0;
+int distance=0;
+
+
+void setup() {
+  Serial.begin(9600);
+  pinMode(tring,OUTPUT);
+  pinMode(eco,INPUT);
+  pinMode(r , OUTPUT);
+  pinMode(y , OUTPUT);
+  pinMode(g , OUTPUT);
+  
+  digitalWrite (tring , LOW);
+  delayMicroseconds (2);
+  digitalWrite (tring , HIGH);
+  delayMicroseconds (10);
+  digitalWrite (tring , LOW);
+  t=pulseIn(eco,HIGH);
+  distance=t/58;
+  Serial.print(distance);
+  Serial.println("cm");
+
+}
+
+void loop() {
+
+  if ( distance > 25){
+
+  digitalWrite(g,LOW);
+  digitalWrite(y,LOW);
+  digitalWrite(r,HIGH);
+
+
+  }
+
+  digitalWrite (tring , LOW);
+  delayMicroseconds (2);
+  digitalWrite (tring , HIGH);
+  delayMicroseconds (10);
+  digitalWrite (tring , LOW);
+  t=pulseIn(eco,HIGH);
+  distance=t/58;
+  Serial.print(distance);
+  Serial.println("cm");
+  
+  
+
+ if ( distance <= 25){
+  digitalWrite(g,LOW);
+  digitalWrite(r,LOW);
+  digitalWrite(y,HIGH);
+
+
+ }
+
+  digitalWrite (tring , LOW);
+  delayMicroseconds (2);
+  digitalWrite (tring , HIGH);
+  delayMicroseconds (10);
+  digitalWrite (tring , LOW);
+  t=pulseIn(eco,HIGH);
+  distance=t/58;
+  Serial.print(distance);
+  Serial.println("cm");
+
+
+
+  if ( distance <= 15){
+
+  digitalWrite(y,LOW);
+  digitalWrite(r,LOW);
+  digitalWrite(g,HIGH);
+  delay(1000);
+
+  }
+
+  digitalWrite (tring , LOW);
+  delayMicroseconds (2);
+  digitalWrite (tring , HIGH);
+  delayMicroseconds (10);
+  digitalWrite (tring , LOW);
+  t=pulseIn(eco,HIGH);
+  distance=t/58;
+  Serial.print(distance);
+  Serial.println("cm");
+
+
+}
